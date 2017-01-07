@@ -97,26 +97,22 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
-Name: "Unknown_Horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
+Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
 Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full fife-only
-;Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full fife-only fife-demos
 Name: dependencies;    Description: "[fifengine] Dependencies";                         Types: full;
-;Name: demos;           Description: "[fifengine] Demos";                                Types: full fife-demos
 Name: cmake;           Description: "[build tools] CMake - build system";               Types: full build-tools
 Name: "Python";        Description: "[build tools] Python - programming language";    
 Name: "Python\py27";   Description: "[build tools] Python v2.7";                        Types: full build-tools; Flags: exclusive
-;Name: "Python\py35";   Description: "[build tools] Python v3.5";                        Types: full build-tools; Flags: exclusive
 Name: swig;            Description: "[build tools] SWIG - interface generator";         Types: full build-tools; 
 
 [Files]
-Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: game
+Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\fifengine-includes\*";    DestDir: "{app}\fifengine-includes";    Flags: recursesubdirs ignoreversion; Components: dependencies
 Source: "..\repackage\cmake\*";                 DestDir: "{app}\cmake";                 Flags: recursesubdirs ignoreversion; Components: cmake
 Source: "..\repackage\swig\*";                  DestDir: "{app}\swig";                  Flags: recursesubdirs ignoreversion; Components: swig
 ; include Python from Appveyor
 ; https://www.appveyor.com/docs/installed-software/#python
 Source: "C:\Python27\*";                        DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
-;Source: "C:\Python35\*";                        DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py35"
 ; collect "PythonNN.dll", which resides in the windows system folder (SysWOW64 or system32)
 Source: "C:\Windows\SysWOW64\python27.dll";     DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
@@ -138,7 +134,7 @@ Filename: "msiexec.exe"; Parameters: "/x ""{app}\libfife\libfife.win32-py2.7.msi
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ;
 ; add path to Python
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python')); Components: Python\py27 or Python\py35;
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python')); Components: Python\py27;
 ;
 ; add path to libfife
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: fifengine;
