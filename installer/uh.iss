@@ -97,7 +97,7 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
-Name: unknown-horizons; Description: "[unknown-horizons] Unknown-Hhorizons";         Types: full;
+Name: "Unknown_Horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
 Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full fife-only
 ;Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full fife-only fife-demos
 Name: dependencies;    Description: "[fifengine] Dependencies";                         Types: full;
