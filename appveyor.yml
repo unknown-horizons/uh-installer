@@ -1,0 +1,30 @@
+# version format
+version: 2017.1.{build}
+
+# cache the "downloads" folder in the build folder
+# refresh cache, if appveyor.yml changes
+# trigger cache refresh line: x
+cache:
+  - downloads -> appveyor.yml
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - date /T & time /T
+  - git config --global core.autocrlf input
+
+before_build: 
+  # download
+  - build-scripts\1-download.bat
+  - dir "%APPVEYOR_BUILD_FOLDER%\downloads"
+  # extract
+  - build-scripts\2-extract.bat
+  - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
+  # copy
+  - build-scripts\3-copy.bat
+  - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
+  
+build_script:
+  - build-tools\innosetup\iscc /DAPP_VERSION=%APPVEYOR_BUILD_VERSION% installer\uh.iss
+
+after_build:
+  - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"

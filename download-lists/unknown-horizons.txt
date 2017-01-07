@@ -1,0 +1,9 @@
+#
+# Unknown-Horizons
+#
+# This is a download description file for the download tool Aria2c.
+#
+# Files to download are defined by URL.
+# The download folder is set by `dir`.
+# The filename is set by `out`.
+#
