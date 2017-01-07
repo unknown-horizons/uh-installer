@@ -92,7 +92,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "full";          Description: "Full installation (game, build-tools, engine, dependencies, demos, tools)"
 Name: "build-tools";   Description: "Build-tools only (CMake, Python, Boost, Swig)"
 Name: "fife-only";     Description: "Engine only"
-;Name: "fife-demos";    Description: "Engine and Demos"
 Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
