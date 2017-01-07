@@ -47,6 +47,14 @@ echo.
 echo Fifengine Python27 Installer
 copy libfife.win32-py2.7.msi "%TARGET_DIR%\libfife.win32-py2.7.msi"
 
+echo.
+echo === Extracting Unknwon-Horizons into the folder %TARGET_DIR%
+echo.
+
+echo.
+echo Unknwon-Horizons
+%ZIP% x unknown-horizons.zip -o..\extracted\unknown-horizons > nul
+
 dir "%TARGET_DIR%"
 
 popd

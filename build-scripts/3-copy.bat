@@ -34,4 +34,7 @@ move "%EXTRACTED_DIR%\fifengine-includes" "%TARGET_DIR%"
 echo Fifengine Python27 Installer 
 move "%EXTRACTED_DIR%\libfife.win32-py2.7.msi" "%TARGET_DIR%"
 
+echo Unknown-Horizons
+move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
+
 popd
