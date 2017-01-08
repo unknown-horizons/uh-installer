@@ -11,7 +11,6 @@ cache:
 init:
   - date /T & time /T
   - git config --global core.autocrlf input
-  - set PATH=C:\Python27;C:\Python27\Scripts;%PATH%
   - ps: $env:path
 
 install:
@@ -29,7 +28,6 @@ before_build:
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # create translation files
   - set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
-  - ps: $env:path
   - python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
   - cd %APPVEYOR_BUILD_FOLDER%
   # copy
