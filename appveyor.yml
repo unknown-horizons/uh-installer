@@ -27,8 +27,8 @@ before_build:
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # create translation files
   - PATH "%path%;%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin"
-  - build-scripts\create-translations.bat
-  - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
+  - c:\python27\python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
+  - cd %APPVEYOR_BUILD_FOLDER%
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
