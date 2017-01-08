@@ -8,6 +8,6 @@ set TARGET_DIR="..\extracted"
 
 cd "%TARGET_DIR%\extracted\unknown-horizons\development\"
 
-python compile_translation_win.py
+c:\python27\python compile_translation_win.py
 
 dir "%TARGET_DIR%"
