@@ -89,26 +89,20 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 ; The user gets a drop-down list to select one of these types.
 ; Selecting a type will selected a set of components.
 [Types]
-Name: "full";          Description: "Full installation (game, build-tools, engine, dependencies, demos, tools)"
-Name: "build-tools";   Description: "Build-tools only (CMake, Python, Boost, Swig)"
-Name: "fife-only";     Description: "Engine only"
+Name: "full";          Description: "Full installation (game, engine, dependencies)"
 Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
 Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
-Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full fife-only
+Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full;
 Name: dependencies;    Description: "[fifengine] Dependencies";                         Types: full;
-Name: cmake;           Description: "[build tools] CMake - build system";               Types: full build-tools
 Name: "Python";        Description: "[build tools] Python - programming language";    
-Name: "Python\py27";   Description: "[build tools] Python v2.7";                        Types: full build-tools; Flags: exclusive
-Name: swig;            Description: "[build tools] SWIG - interface generator";         Types: full build-tools; 
+Name: "Python\py27";   Description: "[build tools] Python v2.7";                        Types: full; Flags: exclusive
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\fifengine-includes\*";    DestDir: "{app}\fifengine-includes";    Flags: recursesubdirs ignoreversion; Components: dependencies
-Source: "..\repackage\cmake\*";                 DestDir: "{app}\cmake";                 Flags: recursesubdirs ignoreversion; Components: cmake
-Source: "..\repackage\swig\*";                  DestDir: "{app}\swig";                  Flags: recursesubdirs ignoreversion; Components: swig
 ; include Python from Appveyor
 ; https://www.appveyor.com/docs/installed-software/#python
 Source: "C:\Python27\*";                        DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"

@@ -16,15 +16,6 @@ pushd extracted
 
 if not exist %TARGET_DIR% (mkdir %TARGET_DIR%)
 
-echo CMake 
-move "%EXTRACTED_DIR%\cmake" "%TARGET_DIR%"
-
-echo Swig
-move "%EXTRACTED_DIR%\swig" "%TARGET_DIR%"
-
-rem echo Python 
-rem move "%EXTRACTED_DIR%\python-installer" "%TARGET_DIR%"
-
 echo Fifengine Dependencies
 move "%EXTRACTED_DIR%\fifengine-includes" "%TARGET_DIR%"
 
