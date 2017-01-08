@@ -16,6 +16,14 @@ pushd extracted
 
 if not exist %TARGET_DIR% (mkdir %TARGET_DIR%)
 
+echo Python27
+rem include Python from Appveyor
+xcopy /SIQY C:\Python27 "%TARGET_DIR%\Python27"
+
+echo Python27.dll
+rem add the mising python27.dll to the python folder
+copy C:\Windows\SysWOW64\python27.dll "%TARGET_DIR%\Python27"
+
 echo Fifengine Dependencies
 move "%EXTRACTED_DIR%\fifengine-includes" "%TARGET_DIR%"
 
