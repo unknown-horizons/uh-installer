@@ -11,35 +11,31 @@ cache:
 init:
   - date /T & time /T
   - git config --global core.autocrlf input
-  - ps: $env:path
-  - python --version
 
 install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.  
   - "pip install --disable-pip-version-check --user --upgrade pip"
   - "pip install pyyaml polib"
-  - python --version
   
 before_build: 
-  - python --version
   # download
   - build-scripts\1-download.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\downloads"
   # extract
   - build-scripts\2-extract.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
-  # create translation files
-  - set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
-  - python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
-  - cd %APPVEYOR_BUILD_FOLDER%
-  # create atlas files
+  # Unknown Horizons - create translation files
+  #- set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
+  - python --version
+  - python "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py"
+  # Unknown Horizons - create atlas files
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
   - python ../horizons/engine/generate_atlases.py 1024
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
-    # stripdown
+  # stripdown
   - build-scripts\4-stripdown.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
   
