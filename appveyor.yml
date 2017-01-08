@@ -12,14 +12,17 @@ init:
   - date /T & time /T
   - git config --global core.autocrlf input
   - ps: $env:path
+  - python --version
 
 install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
-  # about it being out of date.
+  # about it being out of date.  
   - "pip install --disable-pip-version-check --user --upgrade pip"
   - "pip install pyyaml polib"
+  - python --version
   
 before_build: 
+  - python --version
   # download
   - build-scripts\1-download.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\downloads"
