@@ -30,6 +30,9 @@ before_build:
   - set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
   - python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
   - cd %APPVEYOR_BUILD_FOLDER%
+  # create atlas files
+  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
+  - python ../horizons/engine/generate_atlases.py 1024
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
