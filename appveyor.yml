@@ -26,7 +26,7 @@ before_build:
   - build-scripts\2-extract.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # Unknown Horizons - create translation files
-  - set PATH="%PATH%;%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin"
+  - set PATH="%PATH%;C:\projects\uh-installer\build-tools\gettext\bin"
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development"
   - python compile_translation_win.py
   # Unknown Horizons - create atlas files
