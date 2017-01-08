@@ -11,6 +11,7 @@ cache:
 init:
   - date /T & time /T
   - git config --global core.autocrlf input
+  - set PATH=C:\Python27;C:\Python27\Scripts;%PATH%
 
 install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
@@ -26,8 +27,8 @@ before_build:
   - build-scripts\2-extract.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # create translation files
-  - PATH "%path%;%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin"
-  - c:\python27\python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
+  - set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
+  - python %APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py
   - cd %APPVEYOR_BUILD_FOLDER%
   # copy
   - build-scripts\3-copy.bat
