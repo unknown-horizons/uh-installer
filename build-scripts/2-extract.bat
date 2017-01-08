@@ -32,6 +32,4 @@ echo Unknown-Horizons
 %ZIP% x unknown-horizons.zip -o%TARGET_DIR% > nul
 move "%TARGET_DIR%\unknown-horizons*" "%TARGET_DIR%\unknown-horizons"
 
-dir "%TARGET_DIR%"
-
 popd
