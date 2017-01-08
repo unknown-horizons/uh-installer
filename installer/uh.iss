@@ -3,7 +3,7 @@
 ;          (o o)
 ; +-----oOO-{_}-OOo------------------------------------------------------+
 ; |                                                                      |
-; |  Unknown-Horizons - Inno Setup Script File             |
+; |  Unknown-Horizons - Inno Setup Script File                           |
 ; |  -------------------------------------------------------             |
 ; |                                                                      |
 ; |  Author:   Jens A. Koch <jakoch@web.de>                              |

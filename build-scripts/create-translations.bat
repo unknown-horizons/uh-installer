@@ -1,13 +1,13 @@
 @echo off
 
 echo.
-echo == Create Translations files
+echo == Create Translations Files
 echo. 
 
 set TARGET_DIR="..\extracted"
 
 echo.
-echo Unknwon-Horizons
+echo Unknown-Horizons
 cd "%TARGET_DIR%\extracted\unknown-horizons\unknown-horizons-master\development\"
 python compile_translation_win.py
 
