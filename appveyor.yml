@@ -26,12 +26,12 @@ before_build:
   - build-scripts\2-extract.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # Unknown Horizons - create translation files
-  #- set PATH="%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin;%PATH%"
-  - python --version
-  - python "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development\compile_translation_win.py"
+  - set PATH="%PATH%;%APPVEYOR_BUILD_FOLDER%\build-tools\gettext\bin"
+  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development"
+  - python compile_translation_win.py
   # Unknown Horizons - create atlas files
-  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
-  - python ../horizons/engine/generate_atlases.py 1024
+  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\horizons\engine"
+  - python generate_atlases.py 1024
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
