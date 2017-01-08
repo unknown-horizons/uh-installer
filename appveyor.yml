@@ -25,6 +25,9 @@ before_build:
   # extract
   - build-scripts\2-extract.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
+   # create translation files
+  - build-scripts\create-translations.bat
+  - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
