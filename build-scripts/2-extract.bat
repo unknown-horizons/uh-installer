@@ -30,11 +30,6 @@ rem echo Python
 rem %ZIP% x ActivePython.zip -o%TARGET_DIR% > nul
 rem move "%TARGET_DIR%\ActivePython-*" "%TARGET_DIR%\python-installer"
 
-rem echo.
-rem echo TDM-GCC-MINGW
-rem %ZIP% x tdm-gcc.7z -o%TARGET_DIR% > nul
-rem move "%TARGET_DIR%\tdm-gcc-*" "%TARGET_DIR%\mingw"
-
 echo.
 echo === Extracting Fifengine Dependencies into the folder %TARGET_DIR%
 echo.
@@ -52,8 +47,9 @@ echo === Extracting Unknown-Horizons into the folder %TARGET_DIR%
 echo.
 
 echo.
-echo Unknwon-Horizons
-%ZIP% x unknown-horizons.zip -o..\extracted\unknown-horizons > nul
+echo Unknown-Horizons
+%ZIP% x unknown-horizons.zip -o%TARGET_DIR% > nul
+move "%TARGET_DIR%\unknown-horizons*" "%TARGET_DIR%\unknown-horizons"
 
 dir "%TARGET_DIR%"
 
