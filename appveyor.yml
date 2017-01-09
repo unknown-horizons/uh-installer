@@ -29,9 +29,9 @@ before_build:
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development"
   - python compile_translation_win.py
   # Unknown Horizons - create atlas files
-  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons"
-  - python horizons\engine\generate_atlases.py 1024
-  - cd "%APPVEYOR_BUILD_FOLDER%
+  #- cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons"
+  #- python horizons\engine\generate_atlases.py 1024
+  #- cd "%APPVEYOR_BUILD_FOLDER%
   # copy
   - build-scripts\3-copy.bat
   - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
