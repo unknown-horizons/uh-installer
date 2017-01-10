@@ -48,6 +48,8 @@ before_build:
   - rd /S /Q content\gfx\buildings
   - rd /S /Q content\gfx\units
   - rd /S /Q content\gfx\terrain
+  # not needed folder for gamer version of installer
+  - rd /S /Q development
   # copy
   - cd "%APPVEYOR_BUILD_FOLDER%
   - build-scripts\3-copy.bat
