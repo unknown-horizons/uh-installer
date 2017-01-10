@@ -48,9 +48,9 @@ before_build:
   - rd /S /Q content\gfx\buildings
   - rd /S /Q content\gfx\units
   - rd /S /Q content\gfx\terrain
-  # not needed folder for gamer version of installer
+  # Not needed folder for gamer version of installer
   - rd /S /Q development
-  # change uh config from dev to release
+  # Change uh config from dev to release
   - set PATH=%PATH%;C:\projects\uh-installer\build-tools\sed\bin\
   - echo "Unsetting dev version..."
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
