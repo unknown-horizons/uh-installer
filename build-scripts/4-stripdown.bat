@@ -19,9 +19,4 @@ rd /s /q "..\repackage\Python27\Tools"
 rm       "..\repackage\Python27\NEWS.txt"
 rm       "..\repackage\Python27\w9xpopen.exe"
 
-echo.
-echo Fifengine Dependencies
-rd /s /q "..\repackage\fifengine-includes\lib"
-rd /s /q "..\repackage\fifengine-includes\include"
-
 popd

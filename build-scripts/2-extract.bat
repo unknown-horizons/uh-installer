@@ -12,12 +12,8 @@ pushd downloads
 if not exist %TARGET_DIR% (mkdir %TARGET_DIR%)
 
 echo.
-echo === Extracting Fifengine Dependencies into the folder %TARGET_DIR%
+echo === Extracting Fifengine into the folder %TARGET_DIR%
 echo.
-
-echo.
-echo Fifengine Dependencies
-%ZIP% x libfife-dependencies.zip -o..\extracted\fifengine-includes > nul
 
 echo.
 echo Fifengine Python27 Installer

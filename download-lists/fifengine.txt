@@ -8,11 +8,6 @@
 # The filename is set by `out`.
 #
 
-# Fifengine Dependencies (libfife-dependencies)
-https://ci.appveyor.com/api/buildjobs/dpurh33nh4a6ka4v/artifacts/libfife-dependencies-dev-035b2e8-VC14.zip
-    dir=downloads
-    out=libfife-dependencies.zip
-
 # Fifengine - Python Installer
 https://ci.appveyor.com/api/buildjobs/dpurh33nh4a6ka4v/artifacts/libfife-0.4.0.win32-py2.7.msi
     dir=downloads

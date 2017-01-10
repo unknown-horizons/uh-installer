@@ -46,8 +46,8 @@ AppPublisherURL={#APP_URL}
 AppSupportURL={#APP_SUPPORT_URL}
 AppUpdatesURL={#APP_URL}
 
-; default installation folder is "c:\unknown-horizons". users might change this via dialog.
-DefaultDirName=c:\unknown-horizons
+; default installation folder is "c:\Unknown-Horizons". users might change this via dialog.
+DefaultDirName=c:\Unknown-Horizons
 DefaultGroupName={#APP_NAME}
 DirExistsWarning=No
 EnableDirDoesntExistWarning=Yes
@@ -89,20 +89,18 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 ; The user gets a drop-down list to select one of these types.
 ; Selecting a type will selected a set of components.
 [Types]
-Name: "full";          Description: "Full installation (game, engine, dependencies)"
+Name: "full";          Description: "Full installation (game, engine)"
 Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
 Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
 Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full;
-Name: dependencies;    Description: "[fifengine] Dependencies";                         Types: full;
 Name: "Python";        Description: "[build tools] Python - programming language";    
 Name: "Python\py27";   Description: "[build tools] Python v2.7";                        Types: full; Flags: exclusive
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\fifengine-includes\*";    DestDir: "{app}\fifengine-includes";    Flags: recursesubdirs ignoreversion; Components: dependencies
 Source: "..\repackage\Python27\*";                        DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
 Source: "..\repackage\libfife.win32-py2.7.msi"; DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
