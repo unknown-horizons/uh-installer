@@ -40,7 +40,8 @@ before_build:
   - del /Q CONTRIBUTING.md
   - rd /S /Q tests
   # These files/folders may or may not be present
-  - rd /S /Q __pycache__
+  #- dir * /s/b | findstr __pycache__ | attrib +h +s +r
+  #- rd /S /Q __pycache__
   - del /S /Q po/*.po~
   # Removing non-atlas graphics...
   - rd /S /Q content\gfx\base
