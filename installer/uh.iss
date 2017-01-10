@@ -117,6 +117,10 @@ Filename: "msiexec.exe"; Parameters: "/i ""{app}\libfife\libfife.win32-py2.7.msi
 ; un-install "libfife"
 Filename: "msiexec.exe"; Parameters: "/x ""{app}\libfife\libfife.win32-py2.7.msi"" /qn"; StatusMsg: "Uninstalling libFife for Python2.7"; Flags: runascurrentuser runhidden
 
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}\python"
+Type: filesandordirs; Name: "{app}\unknown-horizons"
+
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ;
