@@ -4,4 +4,4 @@ Fetches all required packages for working with Unkown-Horizons: fifengine, inclu
 
 [Download](https://ci.appveyor.com/project/LinuxDonald/uh-installer/branch/master/artifacts)
 
-[Documentation](https://fifengine.github.io/fifengine-docs/developer-manual/en/#_fife_windows_sdk)
+[Documentation](https://github.com/unknown-horizons/unknown-horizons/wiki/Windows-installer#setup-unknown-horizons)
