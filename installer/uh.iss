@@ -94,17 +94,30 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
-Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";             Types: full;
-Name: fifengine;       Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full;
-Name: "Python";        Description: "[build tools] Python - programming language";    
-Name: "Python\py27";   Description: "[build tools] Python v2.7";                        Types: full; Flags: exclusive
+Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full;
+Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full;
+Name: "Python";           Description: "[build tools] Python - programming language";    
+Name: "Python\py27";      Description: "[build tools] Python v2.7";                        Types: full; Flags: exclusive
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python27\*";                        DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
+Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
 Source: "..\repackage\libfife.win32-py2.7.msi"; DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
 
+[Tasks]
+Name: add_startmenu;       Description: Create Startmenu entries
+Name: add_quicklaunchicon; Description: Create a &Quick Launch icon for Unknown Horizons; GroupDescription: Additional Icons:; Components: unknown_horizons
+Name: add_desktopicon;     Description: Create a &Desktop icon for Unknown Horizons;      GroupDescription: Additional Icons:; Components: unknown_horizons
+
+[Icons]
+; define a group for the startmenu
+Name: {group}\Start Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_startmenu
+Name: {group}\Uninstall; Filename: {uninstallexe}; Flags: preventpinning excludefromshowinnewinstall; Tasks: add_startmenu
+; desktop icon
+Name: {userdesktop}\Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_desktopicon
+; quick launch icon
+Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Unknown Horizons; Filename: {app}\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_quicklaunchicon
 
 ; Define items to run automatically on installation...
 [Run]
