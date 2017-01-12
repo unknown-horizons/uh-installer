@@ -34,7 +34,7 @@
 #define COPYRIGHT_YEAR        GetDateTimeString('yyyy', '', '');
 
 [Setup]
-AppId={{8A27DF0C-689B-4B76-8BFC-AFCDD90C1A31}
+;AppId={{8A27DF0C-689B-4B76-8BFC-AFCDD90C1A31}
 
 ; set application meta-data
 AppName={#APP_NAME}
@@ -45,9 +45,11 @@ AppPublisher={#APP_PUBLISHER}
 AppPublisherURL={#APP_URL}
 AppSupportURL={#APP_SUPPORT_URL}
 AppUpdatesURL={#APP_URL}
+UninstallDisplayIcon={app}\unknown-horizons\content\gfx\uh.ico
+UninstallDisplayName={#APP_NAME}
 
-; default installation folder is "c:\Unknown-Horizons". users might change this via dialog.
-DefaultDirName=c:\Unknown-Horizons
+; default installation folder is "C:\Unknown-Horizons". users might change this via dialog.
+DefaultDirName=C:\Unknown-Horizons
 DefaultGroupName={#APP_NAME}
 DirExistsWarning=No
 EnableDirDoesntExistWarning=Yes
@@ -113,7 +115,7 @@ Name: add_desktopicon;     Description: Create a &Desktop icon for Unknown Horiz
 [Icons]
 ; define a group for the startmenu
 Name: {group}\Start Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_startmenu
-Name: {group}\Uninstall; Filename: "{uninstallexe}"; Flags: preventpinning excludefromshowinnewinstall; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_startmenu
+Name: {group}\Uninstall Unknown-Horizons; Filename: "{uninstallexe}"; Tasks: add_startmenu
 ; desktop icon
 Name: {userdesktop}\Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_desktopicon
 ; quick launch icon
