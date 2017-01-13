@@ -140,18 +140,9 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ;
-; add path to Python
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python')); Components: Python\py27;
-;
-; add path to libfife
+; add path to libfife  (because libpng16-16.dll and other dependencies needs to be found)
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: fifengine;
-;
-; Create File Association
-Root: HKCR; Subkey: ".py";                            ValueType: string; ValueName: ""; ValueData: "Python.File"; Flags: uninsdeletevalue
-Root: HKCR; Subkey: "Python.File";                    ValueType: string; ValueName: ""; ValueData: "Python File"; Flags: uninsdeletekey
-Root: HKCR; Subkey: "Python.File\DefaultIcon";        ValueType: string; ValueName: ""; ValueData: "{app}\python\DLLs\py.ico"
-Root: HKCR; Subkey: "Python.File\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\python\python.exe"" ""%1"" %*"
-   
+
 [Code]
 // modification and path lookup helper for env PATH 
 #include "includes\envpath.iss"
@@ -167,8 +158,7 @@ begin
   // 2. remove paths from the env var PATH 
   if (CurUninstallStep = usPostUninstall) then
   begin
-    RemovePathLocalUser(ExpandConstant('{app}') + '\python\Lib\site-packages\fife');
-    RemovePathLocalUser(ExpandConstant('{app}') + '\python');    
+    RemovePathLocalUser(ExpandConstant('{app}') + '\python\Lib\site-packages\fife');   
     // 3. refresh environment, so that the modified PATH var is activated
     RefreshEnvironment();
   end;
