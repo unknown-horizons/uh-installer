@@ -72,6 +72,6 @@ build_script:
 after_build:
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
 
-deploy:
- auth_token:
-   secure: jN/6RatSAA/zCF5XUXx/wIeRnpa9yhtQs5VApZWm9Q6TZYtXQCuCEaaANznYMV/B
+#deploy:
+# auth_token:
+#   secure: jN/6RatSAA/zCF5XUXx/wIeRnpa9yhtQs5VApZWm9Q6TZYtXQCuCEaaANznYMV/B
