@@ -70,6 +70,19 @@ build_script:
 after_build:
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
 
-#deploy:
-# auth_token:
-#   secure: jN/6RatSAA/zCF5XUXx/wIeRnpa9yhtQs5VApZWm9Q6TZYtXQCuCEaaANznYMV/B
+# deploy to Github Releases on tag push
+deploy:
+  provider: GitHub
+  release: 'Unknown-Horizons $(APPVEYOR_REPO_TAG_NAME)'
+  tag: $(APPVEYOR_REPO_TAG_NAME)
+  description: '[**Changelog**](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/CHANGELOG.md)'
+  artifact: Static-Library, Shared-Library
+  draft: false
+  prerelease: false
+  force_update: true               # overwrite files of existing release on GitHub
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
+  auth_token:                      # encrypted token from GitHub
+    secure: jN/6RatSAA/zCF5XUXx/wIeRnpa9yhtQs5VApZWm9Q6TZYtXQCuCEaaANznYMV/B
+    
