@@ -55,7 +55,7 @@ before_build:
   - echo "Unsetting dev version..."
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
   - sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons\constants.py
-  - sed -i 's/RELEASE_VERSION\s=\sget_git_version()/RELEASE_VERSION = 2017.1/g' horizons\constants.py
+  - sed -i 's/RELEASE_VERSION\s=\sget_git_version()/RELEASE_VERSION = u'2017.1'/g' horizons\constants.py
   # copy
   - cd "%APPVEYOR_BUILD_FOLDER%
   - build-scripts\3-copy.bat
