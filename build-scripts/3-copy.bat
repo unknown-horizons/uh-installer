@@ -31,7 +31,7 @@ echo Unknown-Horizons
 move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
 
 echo Copy needed dlls vcruntime140.dll msvcp140.dll
-copy "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\vcruntime140.dll" "%TARGET_DIR%\python\Lib\site-packages\fife"
-copy "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\msvcp140.dll" "%TARGET_DIR%\python\Lib\site-packages\fife"
+copy "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\vcruntime140.dll" "%TARGET_DIR%\Python27\Lib\site-packages\fife"
+copy "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\msvcp140.dll" "%TARGET_DIR%\Python27\Lib\site-packages\fife"
 
 popd
