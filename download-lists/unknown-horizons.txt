@@ -7,6 +7,6 @@
 # The download folder is set by `dir`.
 # The filename is set by `out`.
 #
-https://github.com/unknown-horizons/unknown-horizons/archive/master.zip
+https://github.com/unknown-horizons/unknown-horizons/archive/2017.1.zip
     dir=downloads
     out=unknown-horizons.zip
