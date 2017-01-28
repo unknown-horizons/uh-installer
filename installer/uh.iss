@@ -183,9 +183,9 @@ const
   INSTALLSTATE_ABSENT = 2;       { The product is installed for a different user. }
   INSTALLSTATE_DEFAULT = 5;      { The product is installed for the current user. }
 
-  { Visual C++ 2015 Redistributable 14.0.24215.1 }
+  // Visual C++ 2015 Redistributable 14.0.24215.1
   VC_2015_REDIST_X86 = '{e2803110-78b3-4664-a479-3611a381656a}';
-  VC_2015_REDIST_X64 = '{d992c12e-cab2-426f-bde3-fb8c53950b0d}';
+;  VC_2015_REDIST_X64 = '{d992c12e-cab2-426f-bde3-fb8c53950b0d}';
 
 function MsiQueryProductState(szProduct: string): INSTALLSTATE;
   external 'MsiQueryProductState{#AW}@msi.dll stdcall';
@@ -197,9 +197,5 @@ end;
 
 function VCRedistNeedsInstall: Boolean;
 begin
-  { here the Result must be True when you need to install your VCRedist }
-  { or False when you don't need to, so now it's upon you how you build }
-  { this statement, the following won't install your VC redist only when }
-  { the Visual C++ 2015 Redist Update 3 (x86) is installed for the current user }
-  Result := not (VCVersionInstalled(VC_2015_REDIST_X86)
+  Result := not (VCVersionInstalled(VC_2015_REDIST_X86));
 end;
