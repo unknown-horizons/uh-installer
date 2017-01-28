@@ -96,16 +96,18 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
-Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full;
-Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full;
-Name: "Python";           Description: "[build tools] Python - programming language";    
-Name: "Python\py27";      Description: "[build tools] Python v2.7";                        Types: full; Flags: exclusive
+Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full
+Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full
+Name: "Python";           Description: "[build tools] Python - programming language";
+Name: "Python\py27";      Description: "[build tools] Python v2.7";                        Types: full
+Name: vcredist2015;       Description: "[dep libs] VCRedist2015";                          Types: full
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
 Source: "..\repackage\libfife.win32-py2.7.msi"; DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
+Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
 
 [Tasks]
 Name: add_startmenu;       Description: Create Startmenu entries
@@ -126,6 +128,7 @@ Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Unknown Horizons; F
 ; install "libfife for python2.7" only when "python27" and "fifengine" are selected
 ; install silently into the target dir
 Filename: "msiexec.exe"; Parameters: "/i ""{app}\libfife\libfife.win32-py2.7.msi"" TARGETDIR=""{app}\python"" /qn"; StatusMsg: "Installing libFife for Python2.7"; Components: Python\py27 and fifengine
+Filename: "{app}\libfife\vc_redist.x86.exe"; StatusMsg: "VCRedist2015 package"
 
 ; Define items to run automatically on un-installation...
 [UninstallRun]
