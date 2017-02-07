@@ -9,6 +9,6 @@
 #
 
 # Fifengine - Python Installer
-https://ci.appveyor.com/api/buildjobs/dpurh33nh4a6ka4v/artifacts/libfife-0.4.0.win32-py2.7.msi
+https://ci.appveyor.com/api/buildjobs/vb4ik800mqpc65s8/artifacts/libfife-0.4.1.win32-py2.7.msi
     dir=downloads
     out=libfife.win32-py2.7.msi
