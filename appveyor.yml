@@ -69,7 +69,10 @@ build_script:
 
 after_build:
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
-    name: UH-Installer
+
+artifacts:
+  - path: '_build\Unknown-Horizons-*.exe'
+    name: Installer
 
 # deploy to Github Releases on tag push
 deploy:
