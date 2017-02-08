@@ -72,13 +72,13 @@ after_build:
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
 
 artifacts:
-  - path: '%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-*.exe'
+  - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC14-x86.exe
     name: UH-Installer
 
 # deploy to Github Releases on tag push
 deploy:
   provider: GitHub
-  release: 'Unknown-Horizons $(APPVEYOR_REPO_TAG_NAME)'
+  release: 'Unknown-Horizons-$(APPVEYOR_REPO_TAG_NAME)'
   tag: $(APPVEYOR_REPO_TAG_NAME)
   description: '[**Changelog**](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/CHANGELOG.md)'
   artifact: UH-Installer
