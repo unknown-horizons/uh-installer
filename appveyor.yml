@@ -68,11 +68,12 @@ build_script:
   - build-tools\innosetup\iscc /DAPP_VERSION=%APPVEYOR_BUILD_VERSION% installer\uh.iss
 
 after_build:
+  - dir "%APPVEYOR_BUILD_FOLDER%\"
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
 
 artifacts:
-  - path: '_build\Unknown-Horizons-*.exe'
-    name: Installer
+  - path: '%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-*.exe'
+    name: UH-Installer
 
 # deploy to Github Releases on tag push
 deploy:

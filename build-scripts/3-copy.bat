@@ -28,9 +28,6 @@ copy C:\Windows\SysWOW64\python27.dll "%TARGET_DIR%\Python27"
 echo Copy needed dlls installer
 copy "%LIBS%\vc_redist.x86.exe" "%TARGET_DIR%"
 
-echo Fifengine Python27 Installer 
-move "%EXTRACTED_DIR%\libfife.win32-py2.7.msi" "%TARGET_DIR%"
-
 echo Unknown-Horizons
 move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
 

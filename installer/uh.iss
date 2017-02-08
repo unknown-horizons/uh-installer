@@ -98,15 +98,12 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 [Components]
 Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full
 Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full
-Name: "Python";           Description: "[build tools] Python - programming language";
-Name: "Python\py27";      Description: "[build tools] Python v2.7";                        Types: full
 Name: vcredist2015;       Description: "[dep libs] VCRedist2015";                          Types: full
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
+Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: fifengine
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
-Source: "..\repackage\libfife.win32-py2.7.msi"; DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
 Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: fifengine
 
 [Tasks]
@@ -125,17 +122,9 @@ Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Unknown Horizons; F
 
 ; Define items to run automatically on installation...
 [Run]
-; install "libfife for python2.7" only when "python27" and "fifengine" are selected
-; install silently into the target dir
-Filename: "msiexec.exe"; Parameters: "/i ""{app}\libfife\libfife.win32-py2.7.msi"" TARGETDIR=""{app}\python"" /qn"; StatusMsg: "Installing libFife for Python2.7"; Components: Python\py27 and fifengine
 ; add the Parameters, WorkingDir and StatusMsg as you wish, just keep here
 ; the conditional installation Check
 Filename: "{tmp}\vc_redist.x86.exe"; Parameters: "/q /norestart"; Check: VCRedistNeedsInstall; StatusMsg: "Installing VC++ redistributables..."
-
-; Define items to run automatically on un-installation...
-[UninstallRun]
-; un-install "libfife"
-Filename: "msiexec.exe"; Parameters: "/x ""{app}\libfife\libfife.win32-py2.7.msi"" /qn"; StatusMsg: "Uninstalling libFife for Python2.7"; Flags: runascurrentuser runhidden
 
 [UninstallDelete]
 ;Type: filesandordirs; Name: "{userdocs}\My Games\unknown-horizons"

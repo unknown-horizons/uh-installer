@@ -6,6 +6,7 @@
 - added new fifechan version 0.1.4
 - added `Visual C++ 2015 Redistributable` to installer
 - fixed small bugs
+- changed how we install fife to make the Environment more robust
 
 ## [2017.1]
 
