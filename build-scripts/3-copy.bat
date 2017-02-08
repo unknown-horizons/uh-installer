@@ -26,7 +26,9 @@ rem add the mising python27.dll to the python folder
 copy C:\Windows\SysWOW64\python27.dll "%TARGET_DIR%\Python27"
 
 echo Fife-Engine
-move "%EXTRACTED_DIR%\Python27\*" "%TARGET_DIR%\Python27"
+move "%EXTRACTED_DIR%\Python27\Lib\site-packages\fife" "%TARGET_DIR%\Python27\Lib\site-packages\fife"
+move "%EXTRACTED_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info" "%TARGET_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info"
+dir "%EXTRACTED_DIR%\Python27\Lib\site-packages\"
 
 echo Unknown-Horizons
 move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
