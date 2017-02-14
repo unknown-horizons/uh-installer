@@ -84,6 +84,9 @@ ChangesEnvironment=yes
 ; Tell Windows to reload the environment, because Registry change (file association change: .py)
 ChangesAssociations=yes
 
+; Logging
+SetupLogging=yes
+
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
