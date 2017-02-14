@@ -81,9 +81,6 @@ DisableDirPage=no
 ; Tell Windows to reload the environment, because Registry change (env PATH change)
 ChangesEnvironment=yes
 
-; Tell Windows to reload the environment, because Registry change (file association change: .py)
-ChangesAssociations=yes
-
 ; Logging
 SetupLogging=yes
 
@@ -94,7 +91,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 ; The user gets a drop-down list to select one of these types.
 ; Selecting a type will selected a set of components.
 [Types]
-Name: "full";          Description: "Full installation (game, engine)"
+Name: "full";          Description: "Full installation (game and engine)"
 Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
@@ -105,7 +102,6 @@ Name: vcredist2015;       Description: "[dep libs] VCRedist2015";               
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-; Fifengine below Python, because we are installing the python library into the Python installation folder
 Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
@@ -135,9 +131,8 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
-;
-; add path to libfife  (because libpng16-16.dll and other dependencies needs to be found)
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons;
+; add path to fife (because libpng16-16.dll and other dependencies needs to be found)
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
 
 [Code]
 // modification and path lookup helper for env PATH 
