@@ -106,7 +106,7 @@ Source: "..\repackage\Python27\*";              DestDir: "{app}\python";        
 Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
-Name: add_startmenu;       Description: Create Startmenu entries
+Name: add_startmenu;       Description: Create Startmenu entries;                         Components: unknown_horizons
 Name: add_quicklaunchicon; Description: Create a &Quick Launch icon for Unknown Horizons; GroupDescription: Additional Icons:; Components: unknown_horizons
 Name: add_desktopicon;     Description: Create a &Desktop icon for Unknown Horizons;      GroupDescription: Additional Icons:; Components: unknown_horizons
 
