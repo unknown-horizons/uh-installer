@@ -97,14 +97,13 @@ Name: "custom";        Description: "Custom installation"; Flags: iscustom
 ; Define components to install
 [Components]
 Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full
-Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full
 Name: vcredist2015;       Description: "[dep libs] VCRedist2015";                          Types: full
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: fifengine
+Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 ; Fifengine below Python, because we are installing the python library into the Python installation folder
-Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: fifengine
+Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
 Name: add_startmenu;       Description: Create Startmenu entries
@@ -135,7 +134,7 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ;
 ; add path to libfife  (because libpng16-16.dll and other dependencies needs to be found)
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: fifengine;
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons;
 
 [Code]
 // modification and path lookup helper for env PATH 
