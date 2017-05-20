@@ -112,6 +112,7 @@ Name: add_desktopicon;     Description: Create a &Desktop icon for Unknown Horiz
 [Icons]
 ; define a group for the startmenu
 Name: {group}\Start Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_startmenu
+Name: {group}\Start Unknown-Horizons Debug; Filename: {app}\unknown-horizons\run_uh.bat; Parameters: "--debug"; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_startmenu
 Name: {group}\Uninstall Unknown-Horizons; Filename: "{uninstallexe}"; Tasks: add_startmenu
 ; desktop icon
 Name: {userdesktop}\Unknown-Horizons; Filename: {app}\unknown-horizons\run_uh.bat; IconFilename: "{app}\unknown-horizons\content\gfx\uh.ico"; Tasks: add_desktopicon
