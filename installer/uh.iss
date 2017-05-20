@@ -23,7 +23,7 @@
 
 ; version is set here, when the version isn't passed to the compiler on invocation
 #ifndef APP_VERSION
-#define APP_VERSION          "2017.1"
+#define APP_VERSION          "2017.2"
 #endif
 
 #define APP_NAME             "Unknown-Horizons"
@@ -68,7 +68,7 @@ WizardSmallImageFile=images\WizardSmallImage.bmp
 SetupIconFile=images\uh.ico
  
 ; this creates the installer executable in the build folder
-; for example: "_build\Unknown-Horizons-2017.1-Setup-VC14-x86.exe"
+; for example: "_build\Unknown-Horizons-2017.2-Setup-VC14-x86.exe"
 OutputBaseFilename={#APP_NAME}-{#APP_VERSION}-Setup-{#APP_COMPILER}-x86
 OutputDir=..\_build
 
@@ -81,8 +81,8 @@ DisableDirPage=no
 ; Tell Windows to reload the environment, because Registry change (env PATH change)
 ChangesEnvironment=yes
 
-; Tell Windows to reload the environment, because Registry change (file association change: .py)
-ChangesAssociations=yes
+; Logging
+SetupLogging=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -91,26 +91,21 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 ; The user gets a drop-down list to select one of these types.
 ; Selecting a type will selected a set of components.
 [Types]
-Name: "full";          Description: "Full installation (game, engine)"
+Name: "full";          Description: "Full installation (game and engine)"
 Name: "custom";        Description: "Custom installation"; Flags: iscustom
 
 ; Define components to install
 [Components]
 Name: "unknown_horizons"; Description: "[unknown-horizons] Unknown-Horizons";              Types: full
-Name: fifengine;          Description: "[fifengine] Fifengine - Isometric Game Engine";    Types: full
-Name: "Python";           Description: "[build tools] Python - programming language";
-Name: "Python\py27";      Description: "[build tools] Python v2.7";                        Types: full
 Name: vcredist2015;       Description: "[dep libs] VCRedist2015";                          Types: full
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: "Python\py27"
-; Fifengine below Python, because we are installing the python library into the Python installation folder
-Source: "..\repackage\libfife.win32-py2.7.msi"; DestDir: "{app}\libfife";               Flags: recursesubdirs;               Components: fifengine
-Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: fifengine
+Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
+Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
-Name: add_startmenu;       Description: Create Startmenu entries
+Name: add_startmenu;       Description: Create Startmenu entries;                         Components: unknown_horizons
 Name: add_quicklaunchicon; Description: Create a &Quick Launch icon for Unknown Horizons; GroupDescription: Additional Icons:; Components: unknown_horizons
 Name: add_desktopicon;     Description: Create a &Desktop icon for Unknown Horizons;      GroupDescription: Additional Icons:; Components: unknown_horizons
 
@@ -125,17 +120,9 @@ Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Unknown Horizons; F
 
 ; Define items to run automatically on installation...
 [Run]
-; install "libfife for python2.7" only when "python27" and "fifengine" are selected
-; install silently into the target dir
-Filename: "msiexec.exe"; Parameters: "/i ""{app}\libfife\libfife.win32-py2.7.msi"" TARGETDIR=""{app}\python"" /qn"; StatusMsg: "Installing libFife for Python2.7"; Components: Python\py27 and fifengine
 ; add the Parameters, WorkingDir and StatusMsg as you wish, just keep here
 ; the conditional installation Check
 Filename: "{tmp}\vc_redist.x86.exe"; Parameters: "/q /norestart"; Check: VCRedistNeedsInstall; StatusMsg: "Installing VC++ redistributables..."
-
-; Define items to run automatically on un-installation...
-[UninstallRun]
-; un-install "libfife"
-Filename: "msiexec.exe"; Parameters: "/x ""{app}\libfife\libfife.win32-py2.7.msi"" /qn"; StatusMsg: "Uninstalling libFife for Python2.7"; Flags: runascurrentuser runhidden
 
 [UninstallDelete]
 ;Type: filesandordirs; Name: "{userdocs}\My Games\unknown-horizons"
@@ -144,9 +131,8 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
-;
-; add path to libfife  (because libpng16-16.dll and other dependencies needs to be found)
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: fifengine;
+; add path to fife (because libpng16-16.dll and other dependencies needs to be found)
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
 
 [Code]
 // modification and path lookup helper for env PATH 

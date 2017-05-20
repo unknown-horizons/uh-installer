@@ -1,5 +1,5 @@
 # version format
-version: 2017.1.{build}
+version: 2017.2.{build}
 
 # cache the "downloads" folder in the build folder
 # refresh cache, if appveyor.yml changes
@@ -55,7 +55,7 @@ before_build:
   - echo "Unsetting dev version..."
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
   - sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons\constants.py
-  - sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'2017.1'/g" horizons/constants.py
+  - sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'2017.2'/g" horizons/constants.py
   # copy
   - cd "%APPVEYOR_BUILD_FOLDER%
   - build-scripts\3-copy.bat
@@ -68,15 +68,20 @@ build_script:
   - build-tools\innosetup\iscc /DAPP_VERSION=%APPVEYOR_BUILD_VERSION% installer\uh.iss
 
 after_build:
+  - dir "%APPVEYOR_BUILD_FOLDER%\"
   - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
+
+artifacts:
+  - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC14-x86.exe
+    name: UH-Installer
 
 # deploy to Github Releases on tag push
 deploy:
   provider: GitHub
-  release: 'Unknown-Horizons $(APPVEYOR_REPO_TAG_NAME)'
+  release: 'Unknown-Horizons-$(APPVEYOR_REPO_TAG_NAME)'
   tag: $(APPVEYOR_REPO_TAG_NAME)
   description: '[**Changelog**](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/CHANGELOG.md)'
-  artifact: Static-Library, Shared-Library
+  artifact: UH-Installer
   draft: false
   prerelease: false
   force_update: true               # overwrite files of existing release on GitHub

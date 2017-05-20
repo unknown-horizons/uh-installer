@@ -1,6 +1,14 @@
 # ChangeLog
 
-## [Unreleased]
+## [2017.2]
+- added new Unknown-Horizons version 2017.2
+- added new fife version 0.4.1
+- added new fifechan version 0.1.4
+- added `Visual C++ 2015 Redistributable` to installer
+- fixed small bugs
+- changed how we install fife to make the Environment more robust
+
+## [2017.1]
 
 - added `fifengine python 2.7 installer` to installer and enabled auto-run after install
 - added `fifengine-dependencies` to installer

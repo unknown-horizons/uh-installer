@@ -25,13 +25,15 @@ echo Python27.dll
 rem add the mising python27.dll to the python folder
 copy C:\Windows\SysWOW64\python27.dll "%TARGET_DIR%\Python27"
 
-echo Copy needed dlls installer
-copy "%LIBS%\vc_redist.x86.exe" "%TARGET_DIR%"
-
-echo Fifengine Python27 Installer 
-move "%EXTRACTED_DIR%\libfife.win32-py2.7.msi" "%TARGET_DIR%"
+echo Fife-Engine
+move "%EXTRACTED_DIR%\Python27\Lib\site-packages\fife" "%TARGET_DIR%\Python27\Lib\site-packages\fife"
+move "%EXTRACTED_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info" "%TARGET_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info"
+dir "%EXTRACTED_DIR%\Python27\Lib\site-packages\"
 
 echo Unknown-Horizons
 move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
+
+echo Copy needed dlls installer
+copy "%LIBS%\vc_redist.x86.exe" "%TARGET_DIR%"
 
 popd
