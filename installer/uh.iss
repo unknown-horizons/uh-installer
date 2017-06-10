@@ -134,7 +134,7 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ; add path to fife (because libpng16-16.dll and other dependencies needs to be found)
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalUser(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
+Root: HKLM; EnvironmentKey = 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalMachine(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
 
 [Code]
 // modification and path lookup helper for env PATH 
@@ -146,12 +146,12 @@ begin
   // 1. get the old env var PATH
   if (CurUninstallStep =  usUninstall) then
   begin
-    SaveOldPathLocalUser();
+    SaveOldPathLocalMachine();
   end;  
   // 2. remove paths from the env var PATH 
   if (CurUninstallStep = usPostUninstall) then
   begin
-    RemovePathLocalUser(ExpandConstant('{app}') + '\python\Lib\site-packages\fife');   
+    RemovePathLocalMachine(ExpandConstant('{app}') + '\python\Lib\site-packages\fife');   
     // 3. refresh environment, so that the modified PATH var is activated
     RefreshEnvironment();
   end;
