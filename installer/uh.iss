@@ -134,7 +134,7 @@ Type: filesandordirs; Name: "{app}\unknown-horizons"
 [Registry]
 ; A registry change needs the following directive: [SETUP] ChangesEnvironment=yes
 ; add path to fife (because libpng16-16.dll and other dependencies needs to be found)
-Root: HKLM; EnvironmentKey = 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalMachine(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType:string; ValueName:"PATH"; ValueData:"{olddata};{app}\python\Lib\site-packages\fife"; Flags: preservestringtype; Check: NeedsAddPathLocalMachine(ExpandConstant('{app}\python\Lib\site-packages\fife')); Components: unknown_horizons
 
 [Code]
 // modification and path lookup helper for env PATH 
