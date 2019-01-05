@@ -1,121 +1,52 @@
-aria2 1.30.0
+aria2 1.34.0
 ============
 
 Release Note
 ------------
 
-This release fixes several bugs.  See Changes below for detailed bug
-fixes.  This release adds an ability to expand `${HOME}` to user's
-home directory in several options.  It would be useful when used in
-configuration file.  -S option against torrent file now prints out DHT
-nodes.
+This release fixes several bugs.  See Changes for details.
 
 Changes
 -------
 
-* mingw: Use sqlite 3.15.2
+* mingw: Use SetFileTime to avoid DST adjustment
 
-* Fix bug that --disable-websocket causes build error
+  GH-1079
 
-* Fix bug that lower bound of optimize-concurrent-downloads becomes 1
+* UnknownLengthPieceStorage: return piece length
 
-  GH-798
+  show something in console status when downloading items
+  with unknown content length
 
-* Print DHT nodes with -S option
+  Patch from kwkam
 
-  GH-795
+  GH-1065
 
-* Take into account address family when resolving DHT node address
+* WinConsoleFile: fix colour properly
 
-  GH-794
+  Patch from kwkam
 
-* Allow block device file to -i option
+  GH-1058
 
-  GH-785
+* util: also detect xdg_* env variables on windows
 
-* Expand `${HOME}` to user's home directory in several options
+  so if people like to keep FHS they could define XDG_* for it
 
-  The following options implement this substitution:
+  Patch from kwkam
 
-  * --ca-certificate
-  * --certificate
-  * --dht-file-path
-  * --dht-file-path6
-  * --dir
-  * --input-file
-  * --load-cookies
-  * --log
-  * --metalink-file
-  * --netrc-path
-  * --on-bt-download-complete
-  * --on-download-complete
-  * --on-download-error
-  * --on-download-start
-  * --on-download-stop
-  * --on-download_pause
-  * --out
-  * --private-key
-  * --rpc-certificate
-  * --rpc-private-key
-  * --save-cookies
-  * --save-session
-  * --server-stat-if
-  * --server-stat-of
-  * --torrent-file
+  GH-1057
 
-  GH-780
+* MacOS: Allocate once (apfs compat)
 
-* Document that libaria2 is not thread safe
+* Fix bug that signal handler does not work with libaria2
 
-  GH-775
+  This commit fixes the bug that signal handler does not work with
+  libaria2 when aria2::RUN_ONCE is passed to aria2::run().
 
-* configure: Use pkg-config to find libs whenever possible
+  GH-1053
 
-  Use pkg-config to find cppunit, libxml2 and expat. All those
-  libraries provide pkg-config files, and in all of those cases the
-  pkg-config macro is superior to the custom macros used currently.
+* Retry on HTTP 502
 
-  The advantages of pkg-config files include:
+  Patch from nicolov
 
-  - Explicit static linking support via --static. Currently, e.g.
-    'xml2-config --libs' prints all libraries needed for static
-    linking when doing dynamic linking unnecessary, resulting in
-    unnecessary direct deps.
-
-  - Better cross-build support. You don't have to build the additional
-    *-config tools for target.
-
-  - Better multilib support. Per-ABI pkgconfig directories are
-    commonly supported while packages usually fail to look for
-    per-CHOST *-config variants.
-
-  - Better override support. The current macros allow little to no
-    result overrides, the pkg-config macros let you pass FOO_CFLAGS
-    and FOO_LIBS manually.
-
-  - Cleaner version checks. The code used in libxml.m4 is really
-    creepy.
-
-  Patch from Michał Górny
-
-  GH-773
-
-* WinTLS: Rewrite writeData
-
-  We re-wrote WinTLSSession::writeData.  The major points are:
-
-  * Buffer is now preallocated once handshake is finished.
-    Previously, they are allocated each time when we send one TLS
-    record.
-
-  * Schannel uses header, body and trailer for each secBuffer.  Now we
-    send them off at once using WSASend which is windows counterpart
-    of sendv.  Previously, we do memmove if some of them are
-    truncated.
-
-  * We don't try to send application data in
-    WinTLSSession::closeConnection, since semantically we need same
-    application data used to create TLS record before.  Using 0 length
-    data to finish sending buffered data looks like a hack.
-
-  GH-772
+  GH-1038
