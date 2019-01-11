@@ -23,7 +23,7 @@
 
 ; version is set here, when the version isn't passed to the compiler on invocation
 #ifndef APP_VERSION
-#define APP_VERSION          "2017.2"
+#define APP_VERSION          "2019.1"
 #endif
 
 #define APP_NAME             "Unknown-Horizons"
@@ -68,7 +68,7 @@ WizardSmallImageFile=images\WizardSmallImage.bmp
 SetupIconFile=images\uh.ico
  
 ; this creates the installer executable in the build folder
-; for example: "_build\Unknown-Horizons-2017.2-Setup-VC14-x86.exe"
+; for example: "_build\Unknown-Horizons-2019.1-Setup-VC15-x86.exe"
 OutputBaseFilename={#APP_NAME}-{#APP_VERSION}-Setup-{#APP_COMPILER}-x86
 OutputDir=..\_build
 

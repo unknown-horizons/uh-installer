@@ -1,5 +1,5 @@
 # version format
-version: 2017.2.{build}
+version: 2019.1.{build}
 
 # cache the "downloads" folder in the build folder
 # refresh cache, if appveyor.yml changes
@@ -14,8 +14,8 @@ init:
 
 install:
   # Upgrade to the latest version of pip to avoid "out of date" warnings
-  - pip install --disable-pip-version-check --user --upgrade pip
-  - pip install pyyaml polib pillow
+  - C:\python36\python.exe -m pip install --disable-pip-version-check --user --upgrade pip
+  - C:\python36\scripts\pip.exe install pyyaml polib pillow future
   
 before_build: 
   # download
@@ -52,10 +52,10 @@ before_build:
   - rd /S /Q development
   # Change uh config from dev to release
   - set PATH=%PATH%;C:\projects\uh-installer\build-tools\sed\bin\
-  - echo "Unsetting dev version..."
-  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
-  - sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons\constants.py
-  - sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'2017.2'/g" horizons/constants.py
+  #- echo "Unsetting dev version..."
+  #- cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
+  #- sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons\constants.py
+  #- sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'2019.1'/g" horizons/constants.py
   # copy
   - cd "%APPVEYOR_BUILD_FOLDER%
   - build-scripts\3-copy.bat
@@ -69,10 +69,10 @@ build_script:
 
 after_build:
   - dir "%APPVEYOR_BUILD_FOLDER%\"
-  - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC14-x86.exe"
+  - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC15-x86.exe"
 
 artifacts:
-  - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC14-x86.exe
+  - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC15-x86.exe
     name: UH-Installer
 
 # deploy to Github Releases on tag push

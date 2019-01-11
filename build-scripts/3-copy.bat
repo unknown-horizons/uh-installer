@@ -17,18 +17,14 @@ pushd extracted
 
 if not exist %TARGET_DIR% (mkdir %TARGET_DIR%)
 
-echo Python27
+echo Python36
 rem include Python from Appveyor
-xcopy /SIQY C:\Python27 "%TARGET_DIR%\Python27"
-
-echo Python27.dll
-rem add the mising python27.dll to the python folder
-copy C:\Windows\SysWOW64\python27.dll "%TARGET_DIR%\Python27"
+xcopy /SIQY C:\Python36 "%TARGET_DIR%\Python36"
 
 echo Fife-Engine
-move "%EXTRACTED_DIR%\Python27\Lib\site-packages\fife" "%TARGET_DIR%\Python27\Lib\site-packages\fife"
-move "%EXTRACTED_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info" "%TARGET_DIR%\Python27\Lib\site-packages\libfife-0.4.1-py2.7.egg-info"
-dir "%EXTRACTED_DIR%\Python27\Lib\site-packages\"
+move "%EXTRACTED_DIR%\Python36\Lib\site-packages\fife" "%TARGET_DIR%\Python36\Lib\site-packages\fife"
+move "%EXTRACTED_DIR%\Python36\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "%TARGET_DIR%\Python27\Lib\site-packages\libfife-0.4.2-py3.6.egg-info"
+dir "%EXTRACTED_DIR%\Python36\Lib\site-packages\"
 
 echo Unknown-Horizons
 move "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"

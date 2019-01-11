@@ -1,5 +1,11 @@
 # ChangeLog
 
+## [2019.1]
+- added new Unknown-Horizons version 2019.1
+- added new fife version 0.4.2
+- added new fifechan version 0.1.5
+- changed from python2 to python3
+
 ## [2017.2]
 - added new Unknown-Horizons version 2017.2
 - added new fife version 0.4.1
