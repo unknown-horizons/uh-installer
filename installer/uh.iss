@@ -27,7 +27,7 @@
 #endif
 
 #define APP_NAME             "Unknown-Horizons"
-#define APP_COMPILER         "VC14"
+#define APP_COMPILER         "VC15"
 #define APP_PUBLISHER        "Unknown-Horizons Team"
 #define APP_URL              "http://www.unknown-horizons.org/"
 #define APP_SUPPORT_URL      "https://github.com/unknown-horizons/unknown-horizons/issues"
@@ -102,7 +102,7 @@ Name: vcredist2015;       Description: "[dep libs] VCRedist2015";               
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python27\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
+Source: "..\repackage\Python36\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
