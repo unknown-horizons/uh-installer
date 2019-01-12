@@ -27,10 +27,10 @@ before_build:
   # Unknown Horizons - create translation files
   - set PATH=%PATH%;C:\projects\uh-installer\build-tools\gettext\bin
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development"
-  - python compile_translation_win.py
+  - C:\python36\python.exe compile_translation_win.py
   # Unknown Horizons - create atlas files
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons"
-  - python horizons\engine\generate_atlases.py 1024
+  - C:\python36\python.exe horizons\engine\generate_atlases.py 1024
   # Unknown Horizons - stripdown 
   # remove all .pyc and .pyo files (rmpyc.sh)
   - del /S /Q *.pyc
