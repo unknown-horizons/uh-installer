@@ -16,7 +16,7 @@ echo === Extracting Fifengine into the folder %TARGET_DIR%
 echo.
 
 echo.
-echo Fifengine Python27 Installer
+echo Fifengine Python36 Installer
 %ZIP% x libfife.win32-py3.6.zip -o%TARGET_DIR%
 
 echo.
