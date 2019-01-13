@@ -23,7 +23,7 @@ xcopy /SIQY C:\Python36 "%TARGET_DIR%\Python36"
 
 echo Fife-Engine
 move "%EXTRACTED_DIR%\Python36\Lib\site-packages\fife" "%TARGET_DIR%\Python36\Lib\site-packages\fife"
-move "%EXTRACTED_DIR%\Python36\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "%TARGET_DIR%\Python27\Lib\site-packages\libfife-0.4.2-py3.6.egg-info"
+move "%EXTRACTED_DIR%\Python36\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "%TARGET_DIR%\Python36\Lib\site-packages\libfife-0.4.2-py3.6.egg-info"
 dir "%EXTRACTED_DIR%\Python36\Lib\site-packages\"
 
 echo Unknown-Horizons
