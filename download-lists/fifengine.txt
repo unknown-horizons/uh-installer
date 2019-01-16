@@ -9,6 +9,6 @@
 #
 
 # Fifengine - Python Installer
-https://ci.appveyor.com/api/buildjobs/60vr5ls5qa9vs8cs/artifacts/dist%2Flibfife-0.4.2.win32.zip
+https://ci.appveyor.com/api/buildjobs/519uuubyopb45b99/artifacts/dist%2Flibfife-0.4.2.win32.zip
     dir=downloads
     out=libfife.win32-py3.6.zip
