@@ -52,10 +52,6 @@ before_build:
   - rd /S /Q development
   # Change uh config from dev to release
   - set PATH=%PATH%;C:\projects\uh-installer\build-tools\sed\bin\
-  #- echo "Unsetting dev version..."
-  #- cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\"
-  #- sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons\constants.py
-  #- sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'2019.1'/g" horizons/constants.py
   # copy
   - cd "%APPVEYOR_BUILD_FOLDER%
   - build-scripts\3-copy.bat
