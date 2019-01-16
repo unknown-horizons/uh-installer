@@ -17,7 +17,7 @@ echo.
 
 echo.
 echo Fifengine Python36 Installer
-%ZIP% x fife\Python36.zip -o%TARGET_DIR%
+%ZIP% x "%CD%\fife\Python36.zip" -o%TARGET_DIR%
 
 echo.
 echo === Extracting Unknown-Horizons into the folder %TARGET_DIR%
