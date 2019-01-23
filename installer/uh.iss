@@ -70,7 +70,7 @@ SetupIconFile=images\uh.ico
 ; this creates the installer executable in the build folder
 ; for example: "_build\Unknown-Horizons-2019.1-Setup-VC15-x86.exe"
 OutputBaseFilename={#APP_NAME}-{#APP_VERSION}-Setup-{#APP_COMPILER}-x86
-OutputDir=..\_build
+OutputDir=..
 
 ; disable wizard pages: Welcome (by default), Ready
 DisableReadyPage=yes
