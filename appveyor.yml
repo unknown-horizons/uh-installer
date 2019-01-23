@@ -31,25 +31,6 @@ before_build:
   # Unknown Horizons - create atlas files
   - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons"
   - C:\python36\python.exe horizons\engine\generate_atlases.py 1024
-  # Unknown Horizons - stripdown 
-  # remove all .pyc and .pyo files (rmpyc.sh)
-  - del /S /Q *.pyc
-  - del /S /Q *.pyo
-  - del /Q unknown-horizons.wpr
-  - del /Q stage_build_mac.py
-  - del /Q CONTRIBUTING.md
-  - rd /S /Q tests
-  # These files/folders may or may not be present
-  #- dir * /s/b | findstr __pycache__ | attrib +h +s +r
-  #- rd /S /Q __pycache__
-  - del /S /Q "po\*.po~"
-  # Removing non-atlas graphics...
-  - rd /S /Q content\gfx\base
-  - rd /S /Q content\gfx\buildings
-  - rd /S /Q content\gfx\units
-  - rd /S /Q content\gfx\terrain
-  # Not needed folder for gamer version of installer
-  - rd /S /Q development
   # Change uh config from dev to release
   - set PATH=%PATH%;C:\projects\uh-installer\build-tools\sed\bin\
   # copy
