@@ -8,8 +8,8 @@ init:
 
 install:
   # Upgrade to the latest version of pip to avoid "out of date" warnings
-  - C:\python36\python.exe -m pip install --disable-pip-version-check --user --upgrade pip
-  - C:\python36\scripts\pip.exe install pyyaml polib pillow future
+  - C:\python37\python.exe -m pip install --disable-pip-version-check --user --upgrade pip
+  - C:\python37\scripts\pip.exe install pyyaml polib pillow future
   
 before_build: 
   - build-scripts\1-download.bat
