@@ -63,10 +63,6 @@ before_build:
 build_script:
   - build-tools\innosetup\iscc /DAPP_VERSION=%APPVEYOR_BUILD_VERSION% installer\uh.iss
 
-after_build:
-  - dir "%APPVEYOR_BUILD_FOLDER%\"
-  - appveyor PushArtifact "%APPVEYOR_BUILD_FOLDER%\_build\Unknown-Horizons-%APPVEYOR_BUILD_VERSION%-Setup-VC15-x86.exe"
-
 artifacts:
   - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC15-x86.exe
     name: UH-Installer
