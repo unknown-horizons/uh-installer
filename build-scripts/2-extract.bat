@@ -15,16 +15,12 @@ echo.
 echo === Extracting Fifengine into the folder %TARGET_DIR%
 echo.
 
-echo.
-echo Fifengine Python36 Installer
-%ZIP% x "C:\projects\uh-installer\fife\Python36.zip" -o%TARGET_DIR%
+%ZIP% x libfife.zip -o%TARGET_DIR% > nul
 
 echo.
 echo === Extracting Unknown-Horizons into the folder %TARGET_DIR%
 echo.
 
-echo.
-echo Unknown-Horizons
 %ZIP% x unknown-horizons.zip -o%TARGET_DIR% > nul
 move "%TARGET_DIR%\unknown-horizons*" "%TARGET_DIR%\unknown-horizons"
 

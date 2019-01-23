@@ -4,8 +4,10 @@ echo.
 echo == Stripdown
 echo.
 
+set TARGET_DIR="%CD%\repackage"
+
 echo.
-echo === Stripping packages in ..\repackage
+echo === Stripping packages in %TARGET_DIR%
 echo.
 
 pushd repackage

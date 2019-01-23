@@ -1,12 +1,6 @@
 # version format
 version: 2019.1.{build}
 
-# cache the "downloads" folder in the build folder
-# refresh cache, if appveyor.yml changes
-# trigger cache refresh line: x
-#cache:
-#  - downloads -> appveyor.yml
-
 # scripts that are called at very beginning, before repo cloning
 init:
   - date /T & time /T
@@ -18,34 +12,18 @@ install:
   - C:\python36\scripts\pip.exe install pyyaml polib pillow future
   
 before_build: 
-  # download
   - build-scripts\1-download.bat
-  - dir "%APPVEYOR_BUILD_FOLDER%\downloads"
-  # extract
   - build-scripts\2-extract.bat
-  - dir "%APPVEYOR_BUILD_FOLDER%\extracted"
-  # Unknown Horizons - create translation files
-  - set PATH=%PATH%;C:\projects\uh-installer\build-tools\gettext\bin
-  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons\development"
-  - C:\python36\python.exe compile_translation_win.py
-  # Unknown Horizons - create atlas files
-  - cd "%APPVEYOR_BUILD_FOLDER%\extracted\unknown-horizons"
-  - C:\python36\python.exe horizons\engine\generate_atlases.py 1024
-  # Change uh config from dev to release
-  - set PATH=%PATH%;C:\projects\uh-installer\build-tools\sed\bin\
-  # copy
-  - cd "%APPVEYOR_BUILD_FOLDER%
+  - build-scripts\build-uh-translations.bat
+  - build-scripts\build-uh-atlas.bat
   - build-scripts\3-copy.bat
-  - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
-  # stripdown
   - build-scripts\4-stripdown.bat
-  - dir "%APPVEYOR_BUILD_FOLDER%\repackage"
   
 build_script:
   - build-tools\innosetup\iscc /DAPP_VERSION=%APPVEYOR_BUILD_VERSION% installer\uh.iss
 
 artifacts:
-  - path: _build\Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC15-x86.exe
+  - path: Unknown-Horizons-$(APPVEYOR_BUILD_VERSION)-Setup-VC15-x86.exe
     name: UH-Installer
 
 # deploy to Github Releases on tag push

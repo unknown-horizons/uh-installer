@@ -1,6 +1,4 @@
 #
-# Unknown-Horizons
-#
 # This is a download description file for the download tool Aria2c.
 #
 # Files to download are defined by URL.
@@ -10,3 +8,7 @@
 https://github.com/unknown-horizons/unknown-horizons/archive/2019.1.zip
     dir=downloads
     out=unknown-horizons.zip
+
+https://ci.appveyor.com/api/buildjobs/saeqflscjlhjws2s/artifacts/dist%2Flibfife-0.4.2.win32.zip
+    dir=downloads
+    out=libfife.zip
