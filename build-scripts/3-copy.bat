@@ -7,25 +7,29 @@ echo.
 set EXTRACTED_DIR="%CD%\extracted"
 set TARGET_DIR="%CD%\repackage"
 
-echo.
-echo === Prepare repackaging folder %TARGET_DIR%
-echo.
-
 if not exist %TARGET_DIR% (mkdir %TARGET_DIR%)
 
 pushd extracted
 
-echo Copying Python37 (from Appveyor)
+echo.
+echo === Copying Python37 (from Appveyor)
+echo. 
 xcopy /SIQY C:\Python37 "%TARGET_DIR%\Python37"
 
-echo Copying Fife
+echo.
+echo === Copying Fife
+echo.
 xcopy /SIQY "%EXTRACTED_DIR%\Python37\Lib\site-packages\fife" "%TARGET_DIR%\Python36\Lib\site-packages\fife"
 copy "%EXTRACTED_DIR%\Python37\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "%TARGET_DIR%\Python36\Lib\site-packages"
 
-echo Copying Unknown-Horizons
+echo.
+echo === Copying Unknown-Horizons
+echo.
 xcopy /SIQY "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
 
-echo Copying VCRedistributable
+echo.
+echo === Copying VCRedistributable
+echo.
 copy "..\vc_redist\vc_redist.x86.exe" "%TARGET_DIR%"
 
 popd
