@@ -56,6 +56,7 @@ echo.
 
 cd Python36
 
+del /Q NEWS.txt
 rd /S /Q Doc
 rd /S /Q Scripts
 rd /S /Q tcl
