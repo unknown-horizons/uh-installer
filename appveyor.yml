@@ -7,8 +7,7 @@ init:
   - git config --global core.autocrlf input
 
 install:
-  # Upgrade to the latest version of pip to avoid "out of date" warnings
-  - C:\python37\python.exe -m pip install --disable-pip-version-check --user --upgrade pip
+  - C:\python37\python.exe -m pip install --upgrade pip
   - C:\python37\scripts\pip.exe install pyyaml polib pillow future
   
 before_build: 
