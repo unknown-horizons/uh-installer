@@ -9,6 +9,6 @@ https://github.com/unknown-horizons/unknown-horizons/archive/2019.1.zip
     dir=downloads
     out=unknown-horizons.zip
 
-https://ci.appveyor.com/api/buildjobs/saeqflscjlhjws2s/artifacts/dist%2Flibfife-0.4.2.win32.zip
+https://ci.appveyor.com/api/buildjobs/yjbhoh3i95qfb599/artifacts/dist%2Flibfife-0.4.2.win32.zip
     dir=downloads
     out=libfife.zip
