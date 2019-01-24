@@ -42,5 +42,5 @@ deploy:
   auth_token:                      # encrypted token from GitHub
     secure: jN/6RatSAA/zCF5XUXx/wIeRnpa9yhtQs5VApZWm9Q6TZYtXQCuCEaaANznYMV/B
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#on_finish:
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
