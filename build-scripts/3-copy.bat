@@ -25,7 +25,7 @@ copy "%EXTRACTED_DIR%\Python37\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "
 echo.
 echo === Copying Unknown-Horizons
 echo.
-xcopy /SIQY "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%"
+xcopy /SIQY "%EXTRACTED_DIR%\unknown-horizons" "%TARGET_DIR%\unknown-horizons"
 
 echo.
 echo === Copying VCRedistributable

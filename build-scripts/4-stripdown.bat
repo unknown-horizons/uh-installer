@@ -56,7 +56,7 @@ echo.
 echo === Stripping Python
 echo.
 
-cd Python36
+cd Python37
 
 del /Q NEWS.txt
 rd /S /Q Doc
