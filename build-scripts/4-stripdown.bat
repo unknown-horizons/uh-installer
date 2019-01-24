@@ -63,6 +63,9 @@ rd /S /Q Scripts
 rd /S /Q tcl
 rd /S /Q Tools
 
+rem Remove __pycache__ folders and content
+for /d /r . %%d in (__pycache__) do @if exist "%%d" rd /s/q "%%d" 
+
 cd..
 
 popd
