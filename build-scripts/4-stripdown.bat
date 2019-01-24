@@ -46,9 +46,8 @@ rd /S /Q development
 rem Remove translation artifacts
 del /S /Q "po\*.po~"
 
-rem These files/folders may or may not be present
-rem dir * /s/b | findstr __pycache__ | attrib +h +s +r
-rd /S /Q __pycache__
+rem Remove __pycache__ folders and content
+for /d /r . %%d in (__pycache__) do @if exist "%%d" rd /s/q "%%d" 
 
 cd..
 
