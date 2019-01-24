@@ -5,16 +5,17 @@ version: 2019.1.{build}
 init:
   - date /T & time /T
   - git config --global core.autocrlf input
+  - SET PATH=C:\Python37;%PATH%
 
-install:
-  - C:\python37\python.exe -m pip install --upgrade pip
+install:  
+  - python.exe -m pip install --upgrade pip
   - C:\python37\scripts\pip.exe install pyyaml polib pillow future
   
 before_build: 
   - build-scripts\1-download.bat
   - build-scripts\2-extract.bat
   - build-scripts\build-uh-translations.bat
-  - build-scripts\build-uh-atlas.bat
+  #- build-scripts\build-uh-atlas.bat
   - build-scripts\3-copy.bat
   - build-scripts\4-stripdown.bat
   
