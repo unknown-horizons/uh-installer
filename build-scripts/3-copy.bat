@@ -19,8 +19,8 @@ xcopy /SIQY C:\Python37 "%TARGET_DIR%\Python37"
 echo.
 echo === Copying Fife
 echo.
-xcopy /SIQY "%EXTRACTED_DIR%\Python37\Lib\site-packages\fife" "%TARGET_DIR%\Python36\Lib\site-packages\fife"
-copy "%EXTRACTED_DIR%\Python37\Lib\site-packages\libfife-0.4.2-py3.6.egg-info" "%TARGET_DIR%\Python36\Lib\site-packages"
+xcopy /SIQY "%EXTRACTED_DIR%\Python37\Lib\site-packages\fife" "%TARGET_DIR%\Python37\Lib\site-packages\fife"
+copy "%EXTRACTED_DIR%\Python37\Lib\site-packages\libfife-0.4.2-py3.7.egg-info" "%TARGET_DIR%\Python37\Lib\site-packages"
 
 echo.
 echo === Copying Unknown-Horizons
