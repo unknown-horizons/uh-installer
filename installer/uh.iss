@@ -102,7 +102,7 @@ Name: vcredist2015;       Description: "[dep libs] VCRedist2015";               
 
 [Files]
 Source: "..\repackage\unknown-horizons\*";      DestDir: "{app}\unknown-horizons";      Flags: recursesubdirs ignoreversion; Components: unknown_horizons
-Source: "..\repackage\Python36\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
+Source: "..\repackage\Python37\*";              DestDir: "{app}\python";                Flags: recursesubdirs ignoreversion; Components: unknown_horizons
 Source: "..\repackage\vc_redist.x86.exe";       DestDir: "{tmp}";                       Flags: deleteafterinstall;           Components: unknown_horizons
 
 [Tasks]
