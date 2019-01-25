@@ -4,7 +4,13 @@
 - added new Unknown-Horizons version 2019.1
 - added new fife version 0.4.2
 - added new fifechan version 0.1.5
-- changed from python2 to python3
+- added `Visual C++ 2017 Redistributable` to installer
+- removed python2 
+- improved stripdown for python and uh
+- added `build-uh-atlas.bat` and `build-uh-translations.bat`
+- fixed small bugs in the build-scripts
+- move `download-list.txt` into build-scripts folder
+- removed static fife, added libfife download to `download-list.txt`
 
 ## [2017.2]
 - added new Unknown-Horizons version 2017.2
