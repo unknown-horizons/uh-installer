@@ -15,7 +15,7 @@ before_build:
   - build-scripts\1-download.bat
   - build-scripts\2-extract.bat
   - build-scripts\build-uh-translations.bat
-  #- build-scripts\build-uh-atlas.bat
+  - build-scripts\build-uh-atlas.bat
   - build-scripts\3-copy.bat
   - build-scripts\4-stripdown.bat
   

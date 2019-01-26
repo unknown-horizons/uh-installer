@@ -6,6 +6,6 @@ echo.
 
 pushd extracted\unknown-horizons
 
-python.exe horizons\engine\generate_atlases.py 1024
+python.exe setup.py build_i18n
 
 popd
