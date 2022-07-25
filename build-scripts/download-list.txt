@@ -5,10 +5,10 @@
 # The download folder is set by `dir`.
 # The filename is set by `out`.
 #
-https://github.com/unknown-horizons/unknown-horizons/archive/2019.zip
+https://github.com/unknown-horizons/unknown-horizons/archive/refs/heads/master.zip
     dir=downloads
     out=unknown-horizons.zip
 
-https://ci.appveyor.com/api/buildjobs/i4alrq2gipbp8tv3/artifacts/dist%2Flibfife-0.4.2.win32.zip
+https://github.com/fifengine/fifengine/releases/download/0.4.2/libfife-0.4.2.win32.zip
     dir=downloads
     out=libfife.zip

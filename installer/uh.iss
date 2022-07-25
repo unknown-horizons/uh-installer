@@ -23,7 +23,7 @@
 
 ; version is set here, when the version isn't passed to the compiler on invocation
 #ifndef APP_VERSION
-#define APP_VERSION          "2019.1"
+#define APP_VERSION          "2022.1-git"
 #endif
 
 #define APP_NAME             "Unknown-Horizons"
