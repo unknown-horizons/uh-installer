@@ -1,5 +1,10 @@
 # ChangeLog
 
+## [2022.1-git]
+- added lastest Unknown-Horizons git  version
+- added lastest fife git version
+- added lastest fifechan git version
+
 ## [2019.1]
 - added new Unknown-Horizons version 2019.1
 - added new fife version 0.4.2
